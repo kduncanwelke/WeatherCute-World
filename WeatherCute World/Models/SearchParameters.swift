@@ -10,5 +10,7 @@ import Foundation
 struct SearchParameters {
     static var query: String = "El Paso"
     static var getAirQuality: String = "yes"
-    static var date: String = "2021-06-12"
+    static var date: String = ""
+    
+    static var searchResults: SearchResult?
 }

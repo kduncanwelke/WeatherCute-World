@@ -111,6 +111,8 @@ struct Astronomy: Decodable {
 struct Astro: Decodable {
     var sunrise: String
     var sunset: String
+    var moonrise: String
+    var moonset: String
     var moonPhase: String
     var moonIllumination: String
 }
