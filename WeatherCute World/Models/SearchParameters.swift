@@ -8,9 +8,9 @@
 import Foundation
 
 struct SearchParameters {
-    static var query: String = "El Paso"
+    static var query: String = ""
     static var getAirQuality: String = "yes"
     static var date: String = ""
     
-    static var searchResults: SearchResult?
+    static var searchResults: [LocationData] = []
 }

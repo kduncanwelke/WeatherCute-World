@@ -16,29 +16,18 @@ public class ViewModel {
         // FIXME: add core data save
     }
     
-    func checkIsLocationValid(parameter: String) {
+    func search(parameter: String) {
         SearchParameters.query = parameter
         
-        DataManager<ConditionData>.fetch() { [weak self] result in
+        DataManager<SearchResult>.fetchArray() { [weak self] result in
             print("fetch")
             switch result {
             case .success(let response):
-                self?.validity(isValid: true)
                 print(response)
+                SearchParameters.searchResults = response
             case .failure(let error):
-                self?.validity(isValid: false)
                 print(error)
             }
-        }
-    }
-    
-    func validity(isValid: Bool) {
-        if isValid {
-            // FIXME: toggle ability to add location
-            print("found valid location/data")
-        } else {
-            // FIXME: supply failure message
-            print("could not find location/data")
         }
     }
     

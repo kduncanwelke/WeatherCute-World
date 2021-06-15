@@ -17,8 +17,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        //viewModel.getAll()
-        viewModel.search(parameter: "new york")
+        viewModel.getAll()
+        //viewModel.search(parameter: "london")
     }
 
 }

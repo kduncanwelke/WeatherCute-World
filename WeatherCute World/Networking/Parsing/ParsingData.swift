@@ -23,6 +23,18 @@ struct AstronomyCurrent: SearchType {
     var astronomy: Astronomy
 }
 
+struct SearchResult: SearchType {
+    static var endpoint = Endpoint.search
+    
+    var data: [LocationData]
+}
+
+struct LocationData: Decodable {
+    var name: String
+    var region: String
+    var country: String
+}
+
 struct Location: Decodable {
     var name: String
     var region: String
@@ -50,7 +62,7 @@ struct CurrentConditions: Decodable {
 
 struct Condition: Decodable {
     var text: String
-    var icon: String
+    var code: Int
 }
 
 struct AirQuality: Decodable {

@@ -25,7 +25,7 @@
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnr-Pc-Qvp">
                                 <rect key="frame" x="0.0" y="97" width="414" height="732"/>
                                 <connections>
-                                    <segue destination="bUh-sS-FsT" kind="embed" id="XYa-G0-M2A"/>
+                                    <segue destination="lB9-2a-rKa" kind="embed" id="zdU-Nh-p7E"/>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="0Ig-X9-RsL">
@@ -50,19 +50,99 @@
             </objects>
             <point key="canvasLocation" x="-23.188405797101453" y="59.598214285714285"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="NJG-hP-B13">
+        <!--Content View Controller-->
+        <scene sceneID="vdM-zB-i8T">
             <objects>
-                <viewController id="bUh-sS-FsT" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="CUl-2h-KNE">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="732"/>
+                <viewController id="Wct-r5-cS3" customClass="ContentViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bX3-qO-d77">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No image" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qMA-Z4-JNC">
+                                <rect key="frame" x="170" y="212.5" width="74" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g4b-SN-kEX">
+                                <rect key="frame" x="0.0" y="44" width="414" height="358.5"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zjq-Ju-RoM">
+                                <rect key="frame" x="257.5" y="45" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="25" id="T9g-or-HwC"/>
+                                    <constraint firstAttribute="height" constant="25" id="xgE-bY-G2n"/>
+                                </constraints>
+                                <state key="normal" image="reload"/>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="nZK-fL-NWL">
+                                <rect key="frame" x="260" y="47.5" width="20" height="20"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="erh-gM-FdS">
+                                <rect key="frame" x="165" y="44" width="84.5" height="27"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rof-H6-vb5">
+                                <rect key="frame" x="60" y="79" width="294" height="242"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="70" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKQ-vt-4sK">
+                                <rect key="frame" x="188.5" y="321" width="37" height="36"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition description" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aDZ-Jv-UsR">
+                                <rect key="frame" x="15" y="362" width="384" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="y2i-32-ryI"/>
                         <color key="backgroundColor" red="0.14117647059999999" green="0.63921568630000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="rof-H6-vb5" firstAttribute="height" secondItem="bX3-qO-d77" secondAttribute="height" multiplier="0.27" id="3KA-yd-2HG"/>
+                            <constraint firstItem="RKQ-vt-4sK" firstAttribute="centerX" secondItem="bX3-qO-d77" secondAttribute="centerX" id="4YP-UD-FcX"/>
+                            <constraint firstItem="g4b-SN-kEX" firstAttribute="height" secondItem="bX3-qO-d77" secondAttribute="height" multiplier="0.4" id="7Uy-4J-Q0d"/>
+                            <constraint firstItem="zjq-Ju-RoM" firstAttribute="leading" secondItem="erh-gM-FdS" secondAttribute="trailing" constant="8" id="909-Vd-epH"/>
+                            <constraint firstItem="zjq-Ju-RoM" firstAttribute="centerY" secondItem="erh-gM-FdS" secondAttribute="centerY" id="EfY-Ot-8R8"/>
+                            <constraint firstItem="aDZ-Jv-UsR" firstAttribute="top" secondItem="RKQ-vt-4sK" secondAttribute="bottom" constant="5" id="JvM-fo-C6f"/>
+                            <constraint firstItem="y2i-32-ryI" firstAttribute="trailing" secondItem="rof-H6-vb5" secondAttribute="trailing" constant="60" id="N0a-ec-A16"/>
+                            <constraint firstItem="qMA-Z4-JNC" firstAttribute="centerX" secondItem="g4b-SN-kEX" secondAttribute="centerX" id="TFr-Oy-loU"/>
+                            <constraint firstItem="erh-gM-FdS" firstAttribute="top" secondItem="y2i-32-ryI" secondAttribute="top" id="Ulb-ql-zbp"/>
+                            <constraint firstItem="erh-gM-FdS" firstAttribute="centerX" secondItem="bX3-qO-d77" secondAttribute="centerX" id="WqR-Pa-059"/>
+                            <constraint firstItem="g4b-SN-kEX" firstAttribute="trailing" secondItem="y2i-32-ryI" secondAttribute="trailing" id="bkL-eb-Q5s"/>
+                            <constraint firstItem="g4b-SN-kEX" firstAttribute="leading" secondItem="y2i-32-ryI" secondAttribute="leading" id="bs3-rK-foq"/>
+                            <constraint firstItem="y2i-32-ryI" firstAttribute="trailing" secondItem="aDZ-Jv-UsR" secondAttribute="trailing" constant="15" id="cuq-ZV-p6l"/>
+                            <constraint firstItem="g4b-SN-kEX" firstAttribute="top" secondItem="y2i-32-ryI" secondAttribute="top" id="eIE-VQ-BN5"/>
+                            <constraint firstItem="nZK-fL-NWL" firstAttribute="centerY" secondItem="zjq-Ju-RoM" secondAttribute="centerY" id="hkK-IG-GBB"/>
+                            <constraint firstItem="RKQ-vt-4sK" firstAttribute="top" secondItem="rof-H6-vb5" secondAttribute="bottom" id="kCp-Wd-BPA"/>
+                            <constraint firstItem="qMA-Z4-JNC" firstAttribute="centerY" secondItem="g4b-SN-kEX" secondAttribute="centerY" id="lIp-0v-zXe"/>
+                            <constraint firstItem="nZK-fL-NWL" firstAttribute="centerX" secondItem="zjq-Ju-RoM" secondAttribute="centerX" id="sba-Tc-Ohh"/>
+                            <constraint firstItem="aDZ-Jv-UsR" firstAttribute="leading" secondItem="y2i-32-ryI" secondAttribute="leading" constant="15" id="tb7-Oa-ptb"/>
+                            <constraint firstItem="rof-H6-vb5" firstAttribute="leading" secondItem="y2i-32-ryI" secondAttribute="leading" constant="60" id="u8M-1m-jsZ"/>
+                            <constraint firstItem="rof-H6-vb5" firstAttribute="top" secondItem="erh-gM-FdS" secondAttribute="bottom" constant="8" id="v9s-Em-5ac"/>
+                        </constraints>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sTp-fy-BWl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tr8-dJ-6As" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="888" y="-119"/>
+            <point key="canvasLocation" x="882.60869565217399" y="32.8125"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="nlY-vw-EwH">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="lB9-2a-rKa" customClass="PageViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lio-Do-dQJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="799" y="-591"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="reload" width="100" height="100"/>
+    </resources>
 </document>

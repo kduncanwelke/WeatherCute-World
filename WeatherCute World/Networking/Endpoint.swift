@@ -10,6 +10,7 @@ import Foundation
 enum Endpoint {
     case forecast
     case astronomy
+    case search
     
     private var baseURL: URL {
         return URL(string: "https://api.weatherapi.com/v1/")!
@@ -41,6 +42,15 @@ enum Endpoint {
                 URLQueryItem(name: "key", value: "\(key)"),
                 URLQueryItem(name: "q", value: "\(SearchParameters.query)"),
                 URLQueryItem(name: "dt", value: "\(SearchParameters.date)"),
+            ]
+            
+            return components!.url!
+        case .search:
+            var components = URLComponents(url: baseURL.appendingPathComponent("search.json"), resolvingAgainstBaseURL: false)
+            
+            components!.queryItems = [
+                URLQueryItem(name: "key", value: "\(key)"),
+                URLQueryItem(name: "q", value: "\(SearchParameters.query)")
             ]
             
             return components!.url!
