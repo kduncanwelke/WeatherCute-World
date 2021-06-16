@@ -79,4 +79,12 @@ public class ViewModel {
         let stringToday = dateFormatter.string(from: dateToday)
         SearchParameters.date = stringToday
     }
+    
+    func getCurrentPage() -> Int {
+        return PageManager.currentPage
+    }
+    
+    func getWeatherLocationTotal() -> Int {
+        return WeatherLocations.list.count
+    }
 }

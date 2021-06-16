@@ -45,6 +45,9 @@
                             <constraint firstItem="NAc-wu-Fk3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="z44-5V-Ryw"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="pageControl" destination="0Ig-X9-RsL" id="9SH-gq-Hci"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -53,7 +56,7 @@
         <!--Content View Controller-->
         <scene sceneID="vdM-zB-i8T">
             <objects>
-                <viewController id="Wct-r5-cS3" customClass="ContentViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="contentVC" id="Wct-r5-cS3" customClass="ContentViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bX3-qO-d77">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -128,6 +131,9 @@
                             <constraint firstItem="rof-H6-vb5" firstAttribute="top" secondItem="erh-gM-FdS" secondAttribute="bottom" constant="8" id="v9s-Em-5ac"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="locationLabel" destination="erh-gM-FdS" id="SbS-uA-8Su"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tr8-dJ-6As" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -136,7 +142,7 @@
         <!--Page View Controller-->
         <scene sceneID="nlY-vw-EwH">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="lB9-2a-rKa" customClass="PageViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController storyboardIdentifier="pageVC" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="lB9-2a-rKa" customClass="PageViewController" customModule="WeatherCute_World" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lio-Do-dQJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="799" y="-591"/>

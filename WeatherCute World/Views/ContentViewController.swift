@@ -8,14 +8,31 @@
 import UIKit
 
 class ContentViewController: UIViewController {
+    
+    // MARK: IBOutlets
+    
+    @IBOutlet weak var locationLabel: UILabel!
+    
+    // MARK: Variables
+    
+    private var contentViewModel = ContentViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: NSNotification.Name(rawValue: "refreshContent"), object: nil)
+        
     }
     
-
+    @objc func refreshContent() {
+        loadUI()
+    }
+    
+    func loadUI() {
+        locationLabel.text = contentViewModel.getLocationName()
+    }
+    
     /*
     // MARK: - Navigation
 
