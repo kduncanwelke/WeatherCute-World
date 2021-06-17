@@ -11,6 +11,7 @@ class ViewController: UIViewController {
     
     // MARK: Outlets
     
+    @IBOutlet weak var tempSegmentedControl: UISegmentedControl!
     @IBOutlet weak var pageControl: UIPageControl!
     
     // MARK: Variables
@@ -23,10 +24,8 @@ class ViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(sectionChanged), name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
         
         viewModel.getAll()
-        //viewModel.search(parameter: "london")
-        
+      
         updatePageControl()
-        
     }
     
     func updatePageControl() {
@@ -38,6 +37,14 @@ class ViewController: UIViewController {
         print(PageManager.currentPage)
         print("section changed")
     }
-
+    
+    // MARK: IBActions
+    
+    @IBAction func tempSegmentedChanged(_ sender: UISegmentedControl) {
+        viewModel.changeUnit(index: tempSegmentedControl.selectedSegmentIndex)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "degreeUnitChanged"), object: nil)
+    }
+    
 }
 

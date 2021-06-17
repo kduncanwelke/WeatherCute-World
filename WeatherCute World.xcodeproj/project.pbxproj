@@ -8,9 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C04267915D600C06F88 /* TemperatureUnit.swift */; };
-		2D482C0A26791BA800C06F88 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0926791BA800C06F88 /* WeatherViewModel.swift */; };
 		2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0D2679591600C06F88 /* ContentViewController.swift */; };
 		2D482C102679595700C06F88 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0F2679595700C06F88 /* PageViewController.swift */; };
+		2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB80A267BF600005F19AA /* ViewExtension.swift */; };
 		2D884BE9267A92120003E4CD /* PageControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */; };
 		2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BEA267A92C20003E4CD /* PageManager.swift */; };
 		2D884BED267A9C260003E4CD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BEC267A9C260003E4CD /* ContentViewModel.swift */; };
@@ -37,9 +37,9 @@
 
 /* Begin PBXFileReference section */
 		2D482C04267915D600C06F88 /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
-		2D482C0926791BA800C06F88 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		2D482C0D2679591600C06F88 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		2D482C0F2679595700C06F88 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		2D6CB80A267BF600005F19AA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerViewModel.swift; sourceTree = "<group>"; };
 		2D884BEA267A92C20003E4CD /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		2D884BEC267A9C260003E4CD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -81,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				2D482C04267915D600C06F88 /* TemperatureUnit.swift */,
+				2D6CB80A267BF600005F19AA /* ViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -100,7 +101,6 @@
 			children = (
 				2D9178E326752BA80062D6DC /* ViewModel.swift */,
 				2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */,
-				2D482C0926791BA800C06F88 /* WeatherViewModel.swift */,
 				2D884BEC267A9C260003E4CD /* ContentViewModel.swift */,
 			);
 			path = "View Models";
@@ -247,7 +247,6 @@
 			files = (
 				2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */,
 				2DC34BF82673D1D900C6237D /* NetworkMonitor.swift in Sources */,
-				2D482C0A26791BA800C06F88 /* WeatherViewModel.swift in Sources */,
 				2DC34BEB2673C8F200C6237D /* Result.swift in Sources */,
 				2DC34BF12673CB0A00C6237D /* Endpoint.swift in Sources */,
 				2DC34BEF2673CA2E00C6237D /* DataManager.swift in Sources */,
@@ -265,6 +264,7 @@
 				2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */,
 				2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */,
 				2DDD67712677D0DD000BA6EA /* WeatherLocations.swift in Sources */,
+				2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */,
 				2DC34BED2673C92A00C6237D /* Errors.swift in Sources */,
 				2D884BE9267A92120003E4CD /* PageControllerViewModel.swift in Sources */,
 				2DC34BFB2673E9FD00C6237D /* SearchType.swift in Sources */,

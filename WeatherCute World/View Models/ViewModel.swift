@@ -9,6 +9,14 @@ import Foundation
 
 public class ViewModel {
     
+    func changeUnit(index: Int) {
+        if index == 0 {
+            Temp.currentUnit = .fahrenheit
+        } else {
+            Temp.currentUnit = .celsius
+        }
+    }
+    
     // add selected location
     func addLocation() {
         WeatherLocations.list.append(SearchParameters.query)
@@ -32,8 +40,9 @@ public class ViewModel {
     }
     
     func getAll() {
+        var index = 0
+        
         for location in WeatherLocations.list {
-            var index = 0
             SearchParameters.query = location
             getWeatherData(index: index)
             getAstroData(index: index)
@@ -48,6 +57,10 @@ public class ViewModel {
             case .success(let response):
                 WeatherLocations.locationWeather[index] = response
                 print(response)
+                
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshContent"), object: nil)
+                }
             case .failure(let error):
                 print(error)
             }
