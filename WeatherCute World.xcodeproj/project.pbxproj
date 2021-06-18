@@ -32,6 +32,7 @@
 		2DC94763267290DF0009562E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC94761267290DF0009562E /* Main.storyboard */; };
 		2DC94765267290E00009562E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DC94764267290E00009562E /* Assets.xcassets */; };
 		2DC94768267290E00009562E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC94766267290E00009562E /* LaunchScreen.storyboard */; };
+		2DD9879B267D058400D3F710 /* ForecastCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DD9879A267D058400D3F710 /* ForecastCollectionViewCell.swift */; };
 		2DDD67712677D0DD000BA6EA /* WeatherLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDD67702677D0DD000BA6EA /* WeatherLocations.swift */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		2DC94764267290E00009562E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DC94767267290E00009562E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DC94769267290E00009562E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2DD9879A267D058400D3F710 /* ForecastCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCollectionViewCell.swift; sourceTree = "<group>"; };
 		2DDD67702677D0DD000BA6EA /* WeatherLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLocations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				2DC9475F267290DF0009562E /* ViewController.swift */,
 				2D482C0F2679595700C06F88 /* PageViewController.swift */,
 				2D482C0D2679591600C06F88 /* ContentViewController.swift */,
+				2DD9879A267D058400D3F710 /* ForecastCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			files = (
 				2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */,
 				2DC34BF82673D1D900C6237D /* NetworkMonitor.swift in Sources */,
+				2DD9879B267D058400D3F710 /* ForecastCollectionViewCell.swift in Sources */,
 				2DC34BEB2673C8F200C6237D /* Result.swift in Sources */,
 				2DC34BF12673CB0A00C6237D /* Endpoint.swift in Sources */,
 				2DC34BEF2673CA2E00C6237D /* DataManager.swift in Sources */,

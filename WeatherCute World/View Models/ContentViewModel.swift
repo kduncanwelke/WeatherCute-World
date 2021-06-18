@@ -180,6 +180,193 @@ public class ContentViewModel {
         }
     }
     
+    func getCarbonDioxide() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.co))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getOzone() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.o3))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getNitrogenDioxide() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.no2))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getSulphurDioxide() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.so2))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getPM2() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.pm25))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getPM10() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            return "~\(Int(airQuality.pm10))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastTotal() -> Int {
+        return WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday.count ?? 0
+    }
+    
+    func getForecastDay(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index] {
+            let day = forecast.date
+            let forecastInfo = forecast.day.condition.text
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            
+            let stringDateFormatter = DateFormatter()
+            stringDateFormatter.dateFormat = "EEEE"
+            
+            if let changed = dateFormatter.date(from: day) {
+                return "\(stringDateFormatter.string(from: changed)) - \(forecastInfo) "
+            } else {
+                return "No data"
+            }
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastTemp(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            switch Temp.currentUnit {
+            case .fahrenheit:
+                return "\(Int(forecast.avgtempF)) (\(Int(forecast.mintempF)), \(Int(forecast.maxtempF)))"
+            case .celsius:
+                return "\(Int(forecast.avgtempC)) (\(Int(forecast.mintempC)), \(Int(forecast.maxtempC)))"
+            }
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastHumidity(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            return "\(forecast.avghumidity)%"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getRainChance(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            return "\(forecast.dailyChanceOfRain)%"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getSnowChance(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            return "\(forecast.dailyChanceOfSnow)%"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastUV(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            return "\(forecast.uv)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getSunrise(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.sunrise)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getSunset(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.sunset)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getMoonrise(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.moonrise)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getMoonset(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.moonset)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getMoonPhase(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.moonPhase)"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getMoonIllumination(index: Int) -> String {
+        if let astro = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].astro {
+            return "\(astro.moonIllumination)%"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastWind(index: Int) -> String {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            switch Temp.currentUnit {
+            case .fahrenheit:
+                return "\(forecast.maxwindMph)"
+            case .celsius:
+                return "\(forecast.maxwindKph)"
+            }
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getForecastWeatherImage(index: Int) -> UIImage? {
+        if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
+            return getDayImage(code: forecast.condition.code)
+        } else {
+            return UIImage(named: "none")
+        }
+    }
+    
     func getWeatherImage() -> UIImage? {
         if let current = WeatherLocations.locationWeather[PageManager.currentPage]?.current {
             if current.isDay == 1 {

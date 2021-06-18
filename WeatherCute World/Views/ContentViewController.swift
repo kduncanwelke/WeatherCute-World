@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ContentViewController: UIViewController {
+class ContentViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: IBOutlets
     
@@ -34,6 +34,18 @@ class ContentViewController: UIViewController {
     @IBOutlet weak var phase: UILabel!
     @IBOutlet weak var illumination: UILabel!
     
+    @IBOutlet weak var alertButton: UIButton!
+    
+    @IBOutlet weak var airQualityView: UIView!
+    @IBOutlet weak var carbonMonoxide: UILabel!
+    @IBOutlet weak var ozone: UILabel!
+    @IBOutlet weak var nitrogenDioxide: UILabel!
+    @IBOutlet weak var sulphurDioxide: UILabel!
+    @IBOutlet weak var pm2: UILabel!
+    @IBOutlet weak var pm10: UILabel!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     
     // MARK: Variables
     
@@ -47,8 +59,13 @@ class ContentViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: NSNotification.Name(rawValue: "refreshContent"), object: nil)
         
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
         astroView.layer.cornerRadius = 15
         astroView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        airQualityView.layer.cornerRadius = 15
+        airQualityView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -90,6 +107,15 @@ class ContentViewController: UIViewController {
         moonset.text = contentViewModel.getMoonset()
         phase.text = contentViewModel.getMoonPhase()
         illumination.text = contentViewModel.getMoonIllumination()
+        
+        carbonMonoxide.text = contentViewModel.getCarbonDioxide()
+        ozone.text = contentViewModel.getOzone()
+        nitrogenDioxide.text = contentViewModel.getNitrogenDioxide()
+        sulphurDioxide.text = contentViewModel.getSulphurDioxide()
+        pm2.text = contentViewModel.getPM2()
+        pm10.text = contentViewModel.getPM10()
+        
+        collectionView.reloadData()
     }
     
     /*
@@ -105,10 +131,65 @@ class ContentViewController: UIViewController {
     // MARK: IBActions
    
     @IBAction func pressOnAstro(_ sender: UILongPressGestureRecognizer) {
+        // do not toggle if air quality popup is visible
+        if airQualityView.isHidden == false {
+            return
+        }
+        
         if sender.state == .began {
             astroView.popUp()
         } else if sender.state == .cancelled || sender.state == .ended {
             astroView.goDown()
         }
+    }
+    
+    @IBAction func pressOnAirQuality(_ sender: UILongPressGestureRecognizer) {
+        // do not toggle if astro popup is visible
+        if astroView.isHidden == false {
+            return
+        }
+        
+        if sender.state == .began {
+            airQualityView.popUp()
+        } else if sender.state == .cancelled || sender.state == .ended {
+            airQualityView.goDown()
+        }
+    }
+}
+
+extension ContentViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return contentViewModel.getForecastTotal()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "forecastCell", for: indexPath) as! ForecastCollectionViewCell
+        
+        cell.day.text = contentViewModel.getForecastDay(index: indexPath.row)
+        cell.forecastImage.image = contentViewModel.getForecastWeatherImage(index: indexPath.row)
+        cell.temperature.text = contentViewModel.getForecastTemp(index: indexPath.row)
+        cell.humidity.text = contentViewModel.getForecastHumidity(index: indexPath.row)
+        cell.uv.text = contentViewModel.getForecastUV(index: indexPath.row)
+        cell.windSpeed.text = contentViewModel.getForecastWind(index: indexPath.row)
+        cell.rainChance.text = contentViewModel.getRainChance(index: indexPath.row)
+        cell.snowChance.text = contentViewModel.getSnowChance(index: indexPath.row)
+        cell.sunrise.text = contentViewModel.getSunrise(index: indexPath.row)
+        cell.sunset.text = contentViewModel.getSunset(index: indexPath.row)
+        cell.moonrise.text = contentViewModel.getMoonrise(index: indexPath.row)
+        cell.moonset.text = contentViewModel.getMoonset(index: indexPath.row)
+        cell.phase.text = contentViewModel.getMoonPhase(index: indexPath.row)
+        cell.illumination.text = contentViewModel.getMoonIllumination(index: indexPath.row)
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
+
+        let referenceHeight: CGFloat = 210 // Approximate height of your cell
+
+        let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
+
+        return CGSize(width: referenceWidth, height: referenceHeight)
     }
 }

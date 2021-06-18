@@ -80,6 +80,7 @@ struct Forecast: Decodable {
 
 struct ForecastData: Decodable {
     var day: Day
+    var date: String
     var astro: Astro
 }
 
