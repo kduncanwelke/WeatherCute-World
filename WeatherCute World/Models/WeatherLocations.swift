@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeatherLocations {
-    static var list: [String] = ["El Paso", "54911"]
+    static var list: [String] = ["Corpus Christi", "El Paso", "54911"]
     
     static var locationWeather: [Int: ConditionData] = [:]
     static var locationAstro: [Int: AstronomyCurrent] = [:]

@@ -10,11 +10,33 @@ import UIKit
 
 public class ContentViewModel {
     
+    private let viewModel = ViewModel()
+    
+    func refreshData() {
+        var index = PageManager.currentPage
+        SearchParameters.query = WeatherLocations.list[index]
+        print("index \(index)")
+        viewModel.getWeatherData(index: index)
+        viewModel.getAstroData(index: index)
+    }
+    
     func getLocationName() -> String {
         if let location = WeatherLocations.locationWeather[PageManager.currentPage]?.location {
             return location.name
         } else {
             return "Unknown"
+        }
+    }
+    
+    func hideAlertButton() -> Bool {
+        if let current = WeatherLocations.locationWeather[PageManager.currentPage]?.alerts {
+            if current.alert.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return true
         }
     }
     
@@ -257,9 +279,9 @@ public class ContentViewModel {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
             switch Temp.currentUnit {
             case .fahrenheit:
-                return "\(Int(forecast.avgtempF)) (\(Int(forecast.mintempF)), \(Int(forecast.maxtempF)))"
+                return "\(Int(forecast.avgtempF))°F"
             case .celsius:
-                return "\(Int(forecast.avgtempC)) (\(Int(forecast.mintempC)), \(Int(forecast.maxtempC)))"
+                return "\(Int(forecast.avgtempC))°C"
             }
         } else {
             return "No data"
@@ -268,7 +290,7 @@ public class ContentViewModel {
     
     func getForecastHumidity(index: Int) -> String {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
-            return "\(forecast.avghumidity)%"
+            return "\(Int(forecast.avghumidity))%"
         } else {
             return "No data"
         }
@@ -292,7 +314,7 @@ public class ContentViewModel {
     
     func getForecastUV(index: Int) -> String {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
-            return "\(forecast.uv)"
+            return "\(Int(forecast.uv))"
         } else {
             return "No data"
         }
@@ -350,9 +372,9 @@ public class ContentViewModel {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
             switch Temp.currentUnit {
             case .fahrenheit:
-                return "\(forecast.maxwindMph)"
+                return "\(Int(forecast.maxwindMph))mph"
             case .celsius:
-                return "\(forecast.maxwindKph)"
+                return "\(Int(forecast.maxwindKph))kph"
             }
         } else {
             return "No data"

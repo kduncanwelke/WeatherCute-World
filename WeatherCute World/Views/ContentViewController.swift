@@ -73,6 +73,14 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @objc func refreshContent() {
+        // use if data has been reloaded
+        print("refreshed")
+        if reloadIndicator.isAnimating {
+            reloadIndicator.stopAnimating()
+            reloadButton.setImage(UIImage(named: "reload"), for: .normal)
+            reloadButton.isEnabled = true
+        }
+        
         loadUI()
     }
     
@@ -115,6 +123,8 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         pm2.text = contentViewModel.getPM2()
         pm10.text = contentViewModel.getPM10()
         
+        alertButton.isHidden = contentViewModel.hideAlertButton()
+        
         collectionView.reloadData()
     }
     
@@ -129,6 +139,13 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     */
     
     // MARK: IBActions
+    
+    @IBAction func reloadPressed(_ sender: UIButton) {
+        reloadIndicator.startAnimating()
+        reloadButton.setImage(UIImage(named: "loading"), for: .normal)
+        reloadButton.isEnabled = false
+        contentViewModel.refreshData()
+    }
    
     @IBAction func pressOnAstro(_ sender: UILongPressGestureRecognizer) {
         // do not toggle if air quality popup is visible
@@ -154,6 +171,10 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         } else if sender.state == .cancelled || sender.state == .ended {
             airQualityView.goDown()
         }
+    }
+    
+    @IBAction func alertButtonPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "viewAlerts", sender: Any?.self)
     }
 }
 

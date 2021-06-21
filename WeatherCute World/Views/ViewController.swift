@@ -46,5 +46,9 @@ class ViewController: UIViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "degreeUnitChanged"), object: nil)
     }
     
+    @IBAction func addLocationPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "addLocation", sender: Any?.self)
+    }
+    
 }
 

@@ -102,12 +102,8 @@ struct AlertData: Decodable {
 }
 
 struct Day: Decodable {
-    var maxtempC: Double
-    var maxtempF: Double
     var avgtempC: Double
     var avgtempF: Double
-    var mintempC: Double
-    var mintempF: Double
     var maxwindKph: Double
     var maxwindMph: Double
     var avghumidity: Double
