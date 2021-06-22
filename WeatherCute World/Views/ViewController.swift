@@ -21,14 +21,22 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(retrieveData), name: NSNotification.Name(rawValue: "retrieveData"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(sectionChanged), name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updatePageControl), name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
         
         viewModel.getAll()
       
         updatePageControl()
     }
     
-    func updatePageControl() {
+    @objc func retrieveData() {
+        viewModel.getAll()
+    }
+    
+    @objc func updatePageControl() {
         pageControl.numberOfPages = viewModel.getWeatherLocationTotal()
     }
     
@@ -44,6 +52,11 @@ class ViewController: UIViewController {
         viewModel.changeUnit(index: tempSegmentedControl.selectedSegmentIndex)
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "degreeUnitChanged"), object: nil)
+    }
+    
+    
+    @IBAction func editTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: "edit", sender: Any?.self)
     }
     
     @IBAction func addLocationPressed(_ sender: UIButton) {

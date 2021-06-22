@@ -17,11 +17,20 @@ class PageViewController: UIPageViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(addPage), name: NSNotification.Name(rawValue: "addPage"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getNextPage), name: NSNotification.Name(rawValue: "getNextPage"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getPrevPage), name: NSNotification.Name(rawValue: "getPrevPage"), object: nil)
+        
         dataSource = self
         delegate = self
         createPageViewController()
     }
     
+    @objc func addPage() {
+        createPageViewController()
+    }
 
     func createPageViewController() {
         if pageControllerViewModel.getWeatherLocationTotal() > 0 {
@@ -41,6 +50,55 @@ class PageViewController: UIPageViewController {
         }
         
         return nil
+    }
+    
+    @objc func getNextPage() {
+        if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+        }
+
+        // if not currently on last page, move forward as many pages as there are between the current and the last
+        if pageControllerViewModel.getWeatherLocationTotal() > 1 {
+            let locationCount = pageControllerViewModel.getWeatherLocationTotal() - 1
+            for i in 1...locationCount - pageControllerViewModel.getCurrentPage() {
+                if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+                    setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+                }
+            }
+        }
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
+    }
+    
+    @objc func getPrevPage() {
+        if pageControllerViewModel.getCurrentPage() == 0 {
+            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
+        } else if pageControllerViewModel.getCurrentPage() == (pageControllerViewModel.getWeatherLocationTotal() - 1) {
+           
+            pageControllerViewModel.setCurrentPage(page: pageControllerViewModel.getCurrentPage()-1)
+            
+            // move up a section as this is last page
+            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+                setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
+        } else {
+            // move down a section since this is not last page
+            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            }
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
+        }
     }
     
     /*

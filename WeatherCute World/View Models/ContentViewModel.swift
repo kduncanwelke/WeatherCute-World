@@ -298,7 +298,7 @@ public class ContentViewModel {
     
     func getRainChance(index: Int) -> String {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
-            return "\(forecast.dailyChanceOfRain)%"
+            return "\(forecast.dailyChanceOfRain)% chance"
         } else {
             return "No data"
         }
@@ -306,7 +306,7 @@ public class ContentViewModel {
     
     func getSnowChance(index: Int) -> String {
         if let forecast = WeatherLocations.locationWeather[PageManager.currentPage]?.forecast.forecastday[index].day {
-            return "\(forecast.dailyChanceOfSnow)%"
+            return "\(forecast.dailyChanceOfSnow)% chance"
         } else {
             return "No data"
         }

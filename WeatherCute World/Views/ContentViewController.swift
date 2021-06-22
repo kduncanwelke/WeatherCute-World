@@ -92,6 +92,7 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         pressure.text = contentViewModel.getPressure()
         wind.text = contentViewModel.getWind()
         gust.text = contentViewModel.getGust()
+        collectionView.reloadData()
     }
     
     func loadUI() {

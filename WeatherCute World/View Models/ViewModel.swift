@@ -17,28 +17,6 @@ public class ViewModel {
         }
     }
     
-    // add selected location
-    func addLocation() {
-        WeatherLocations.list.append(SearchParameters.query)
-        
-        // FIXME: add core data save
-    }
-    
-    func search(parameter: String) {
-        SearchParameters.query = parameter
-        
-        DataManager<SearchResult>.fetchArray() { [weak self] result in
-            print("fetch")
-            switch result {
-            case .success(let response):
-                print(response)
-                SearchParameters.searchResults = response
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
-    
     func getAll() {
         var index = 0
         

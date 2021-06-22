@@ -11,6 +11,11 @@
 		2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0D2679591600C06F88 /* ContentViewController.swift */; };
 		2D482C102679595700C06F88 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0F2679595700C06F88 /* PageViewController.swift */; };
 		2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB80A267BF600005F19AA /* ViewExtension.swift */; };
+		2D6E4CCE268241A9006B0163 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CCD268241A9006B0163 /* LocationTableViewCell.swift */; };
+		2D6E4CD0268242C8006B0163 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CCF268242C8006B0163 /* SearchViewModel.swift */; };
+		2D6E4CD22682801E006B0163 /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CD12682801E006B0163 /* EditViewController.swift */; };
+		2D6E4CD42682825F006B0163 /* EditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CD32682825F006B0163 /* EditViewModel.swift */; };
+		2D6E4CD6268282CF006B0163 /* EditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CD5268282CF006B0163 /* EditTableViewCell.swift */; };
 		2D884BE9267A92120003E4CD /* PageControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */; };
 		2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BEA267A92C20003E4CD /* PageManager.swift */; };
 		2D884BED267A9C260003E4CD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D884BEC267A9C260003E4CD /* ContentViewModel.swift */; };
@@ -44,6 +49,11 @@
 		2D482C0D2679591600C06F88 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		2D482C0F2679595700C06F88 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		2D6CB80A267BF600005F19AA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		2D6E4CCD268241A9006B0163 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		2D6E4CCF268242C8006B0163 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		2D6E4CD12682801E006B0163 /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		2D6E4CD32682825F006B0163 /* EditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewModel.swift; sourceTree = "<group>"; };
+		2D6E4CD5268282CF006B0163 /* EditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewCell.swift; sourceTree = "<group>"; };
 		2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControllerViewModel.swift; sourceTree = "<group>"; };
 		2D884BEA267A92C20003E4CD /* PageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageManager.swift; sourceTree = "<group>"; };
 		2D884BEC267A9C260003E4CD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
@@ -94,12 +104,23 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		2D6E4CD7268282D6006B0163 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2D6E4CD5268282CF006B0163 /* EditTableViewCell.swift */,
+				2D6E4CCD268241A9006B0163 /* LocationTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		2D9178E226752AF90062D6DC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2D6E4CD7268282D6006B0163 /* Cells */,
 				2DC9475F267290DF0009562E /* ViewController.swift */,
 				2D482C0F2679595700C06F88 /* PageViewController.swift */,
 				2DCB3FD22681325A007D0050 /* AddViewController.swift */,
+				2D6E4CD12682801E006B0163 /* EditViewController.swift */,
 				2D482C0D2679591600C06F88 /* ContentViewController.swift */,
 				2DD9879A267D058400D3F710 /* ForecastCollectionViewCell.swift */,
 				2D930A97268104E80047D08D /* AlertViewController.swift */,
@@ -113,6 +134,8 @@
 				2D9178E326752BA80062D6DC /* ViewModel.swift */,
 				2D884BE8267A92120003E4CD /* PageControllerViewModel.swift */,
 				2D884BEC267A9C260003E4CD /* ContentViewModel.swift */,
+				2D6E4CCF268242C8006B0163 /* SearchViewModel.swift */,
+				2D6E4CD32682825F006B0163 /* EditViewModel.swift */,
 				2D930A9926810BF70047D08D /* AlertViewModel.swift */,
 			);
 			path = "View Models";
@@ -264,6 +287,7 @@
 				2DC34BEB2673C8F200C6237D /* Result.swift in Sources */,
 				2DC34BF12673CB0A00C6237D /* Endpoint.swift in Sources */,
 				2DC34BEF2673CA2E00C6237D /* DataManager.swift in Sources */,
+				2D6E4CD42682825F006B0163 /* EditViewModel.swift in Sources */,
 				2DC34BF62673D0DA00C6237D /* SearchParameters.swift in Sources */,
 				2DC34BE92673C8B400C6237D /* Networker.swift in Sources */,
 				2D9178E126752A450062D6DC /* ReturnedData.swift in Sources */,
@@ -275,11 +299,15 @@
 				2D9178E426752BA80062D6DC /* ViewModel.swift in Sources */,
 				2DC9475E267290DF0009562E /* SceneDelegate.swift in Sources */,
 				2DC34BFD2674011800C6237D /* ParsingData.swift in Sources */,
+				2D6E4CD0268242C8006B0163 /* SearchViewModel.swift in Sources */,
 				2D930A9A26810BF70047D08D /* AlertViewModel.swift in Sources */,
+				2D6E4CD22682801E006B0163 /* EditViewController.swift in Sources */,
 				2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */,
 				2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */,
 				2DDD67712677D0DD000BA6EA /* WeatherLocations.swift in Sources */,
+				2D6E4CCE268241A9006B0163 /* LocationTableViewCell.swift in Sources */,
 				2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */,
+				2D6E4CD6268282CF006B0163 /* EditTableViewCell.swift in Sources */,
 				2DC34BED2673C92A00C6237D /* Errors.swift in Sources */,
 				2D884BE9267A92120003E4CD /* PageControllerViewModel.swift in Sources */,
 				2D930A98268104E80047D08D /* AlertViewController.swift in Sources */,
