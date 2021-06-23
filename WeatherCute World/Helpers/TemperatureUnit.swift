@@ -7,10 +7,12 @@
 
 import Foundation
 
-enum TemperatureUnit {
+enum TemperatureUnit: Int {
     case fahrenheit, celsius
 }
 
 struct Temp {
     static var currentUnit: TemperatureUnit = .fahrenheit
+    
+    static var loaded: UnitSave?
 }

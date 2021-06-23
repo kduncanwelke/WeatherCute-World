@@ -27,9 +27,17 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updatePageControl), name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
         
-        viewModel.getAll()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateSegment), name: NSNotification.Name(rawValue: "updateSegment"), object: nil)
+        
+        //viewModel.getAll()
+        viewModel.loadLocations()
+        viewModel.loadUnit()
       
         updatePageControl()
+    }
+    
+    @objc func updateSegment() {
+        tempSegmentedControl.selectedSegmentIndex = viewModel.getSegment()
     }
     
     @objc func retrieveData() {

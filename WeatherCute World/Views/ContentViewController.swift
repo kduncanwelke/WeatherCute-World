@@ -43,6 +43,7 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var sulphurDioxide: UILabel!
     @IBOutlet weak var pm2: UILabel!
     @IBOutlet weak var pm10: UILabel!
+    @IBOutlet weak var airQualityIndex: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -123,6 +124,7 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         sulphurDioxide.text = contentViewModel.getSulphurDioxide()
         pm2.text = contentViewModel.getPM2()
         pm10.text = contentViewModel.getPM10()
+        airQualityIndex.text = contentViewModel.getAirQualityIndex()
         
         alertButton.isHidden = contentViewModel.hideAlertButton()
         

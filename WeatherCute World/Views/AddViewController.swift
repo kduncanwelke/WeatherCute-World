@@ -59,6 +59,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     // MARK: IBActions
     
     @IBAction func dismiss(_ sender: UIButton) {
+        searchViewModel.clearSearch()
         self.dismiss(animated: true, completion: nil)
     }
 

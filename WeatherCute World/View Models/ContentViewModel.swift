@@ -13,9 +13,10 @@ public class ContentViewModel {
     private let viewModel = ViewModel()
     
     func refreshData() {
+        // retrieve anew when page is refreshed
         var index = PageManager.currentPage
         SearchParameters.query = WeatherLocations.list[index]
-        print("index \(index)")
+      
         viewModel.getWeatherData(index: index)
         viewModel.getAstroData(index: index)
     }
@@ -48,16 +49,18 @@ public class ContentViewModel {
         stringDateFormatter.dateFormat = "MMM dd, hh:mma"
         
         let metricyStringDateFormatter = DateFormatter()
-        metricyStringDateFormatter.dateFormat = "dd MMM, HH:mm"
+        metricyStringDateFormatter.dateFormat = "dd MMM, hh:mma"
         
         if let location = WeatherLocations.locationWeather[PageManager.currentPage]?.location {
             
             if let changed = dateFormatter.date(from: location.localtime) {
                 switch Temp.currentUnit {
                 case .fahrenheit:
+                    // US style date format
                     let stringy = stringDateFormatter.string(from: changed)
                     return stringy
                 case .celsius:
+                    // metric style date format
                     let stringy = metricyStringDateFormatter.string(from: changed)
                     return stringy
                 }
@@ -204,7 +207,7 @@ public class ContentViewModel {
     
     func getCarbonDioxide() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.co))μg/m3"
+            return "\(Int(airQuality.co))μg/m3"
         } else {
             return "No data"
         }
@@ -212,7 +215,7 @@ public class ContentViewModel {
     
     func getOzone() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.o3))μg/m3"
+            return "\(Int(airQuality.o3))μg/m3"
         } else {
             return "No data"
         }
@@ -220,7 +223,7 @@ public class ContentViewModel {
     
     func getNitrogenDioxide() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.no2))μg/m3"
+            return "\(Int(airQuality.no2))μg/m3"
         } else {
             return "No data"
         }
@@ -228,7 +231,7 @@ public class ContentViewModel {
     
     func getSulphurDioxide() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.so2))μg/m3"
+            return "\(Int(airQuality.so2))μg/m3"
         } else {
             return "No data"
         }
@@ -236,7 +239,7 @@ public class ContentViewModel {
     
     func getPM2() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.pm25))μg/m3"
+            return "\(Int(airQuality.pm25))μg/m3"
         } else {
             return "No data"
         }
@@ -244,7 +247,31 @@ public class ContentViewModel {
     
     func getPM10() -> String {
         if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
-            return "~\(Int(airQuality.pm10))μg/m3"
+            return "\(Int(airQuality.pm10))μg/m3"
+        } else {
+            return "No data"
+        }
+    }
+    
+    func getAirQualityIndex() -> String {
+        if let airQuality = WeatherLocations.locationWeather[PageManager.currentPage]?.current.airQuality {
+            
+            if airQuality.usEpaIndex == 1 {
+                return "Good"
+            } else if airQuality.usEpaIndex == 2 {
+                return "Moderate"
+            } else if airQuality.usEpaIndex == 3 {
+                return "Unhealthy for sensitive individuals"
+            } else if airQuality.usEpaIndex == 4 {
+                return "Unhealthy"
+            } else if airQuality.usEpaIndex == 5 {
+                return "Very Unhealthy"
+            } else if airQuality.usEpaIndex == 6 {
+                return "Hazardous"
+            } else {
+                return "No data"
+            }
+            
         } else {
             return "No data"
         }

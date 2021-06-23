@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 public class ViewModel {
     
@@ -14,6 +15,17 @@ public class ViewModel {
             Temp.currentUnit = .fahrenheit
         } else {
             Temp.currentUnit = .celsius
+        }
+        
+        saveUnit(segment: index)
+    }
+    
+    func getSegment() -> Int {
+        switch Temp.currentUnit {
+        case .fahrenheit:
+            return 0
+        case .celsius:
+            return 1
         }
     }
     
@@ -26,10 +38,13 @@ public class ViewModel {
             getAstroData(index: index)
             index += 1
         }
+        
+        // create page controller pages after data load
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPage"), object: nil)
     }
     
     func getWeatherData(index: Int) {
-        DataManager<ConditionData>.fetch() { [weak self] result in
+        DataManager<ConditionData>.fetch() { result in
             print("fetch")
             switch result {
             case .success(let response):
@@ -48,7 +63,7 @@ public class ViewModel {
     func getAstroData(index: Int) {
         assignCurrentDate()
         
-        DataManager<AstronomyCurrent>.fetch() { [weak self] result in
+        DataManager<AstronomyCurrent>.fetch() { result in
             print("fetch")
             switch result {
             case .success(let response):
@@ -77,5 +92,74 @@ public class ViewModel {
     
     func getWeatherLocationTotal() -> Int {
         return WeatherLocations.list.count
+    }
+    
+    func loadLocations() {
+        var managedContext = CoreDataManager.shared.managedObjectContext
+        var fetchRequest = NSFetchRequest<LocationSave>(entityName: "LocationSave")
+        
+        do {
+            WeatherLocations.loaded = try managedContext.fetch(fetchRequest)
+            print("locations loaded")
+            
+            for location in WeatherLocations.loaded {
+                WeatherLocations.list.append(location.name ?? "")
+            }
+            
+            getAll()
+        } catch let error as NSError {
+            //showAlert(title: "Could not retrieve data", message: "\(error.userInfo)")
+        }
+    }
+    
+    func loadUnit() {
+        var managedContext = CoreDataManager.shared.managedObjectContext
+        var fetchRequest = NSFetchRequest<UnitSave>(entityName: "UnitSave")
+        
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            
+            Temp.loaded = result.first
+            print("unit loaded")
+            
+            if let unit = Temp.loaded {
+                if let loadedValue = TemperatureUnit(rawValue: Int(unit.which)) {
+                    Temp.currentUnit = loadedValue
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateSegment"), object: nil)
+                }
+            }
+        } catch let error as NSError {
+            //showAlert(title: "Could not retrieve data", message: "\(error.userInfo)")
+        }
+    }
+    
+    func saveUnit(segment: Int) {
+        var managedContext = CoreDataManager.shared.managedObjectContext
+        
+        guard let currentSave = Temp.loaded else {
+            let unitSave = UnitSave(context: managedContext)
+            
+            unitSave.which = Int16(segment)
+            
+            do {
+                try managedContext.save()
+                print("unit saved")
+            } catch {
+                // this should never be displayed but is here to cover the possibility
+                //showAlert(title: "Save failed", message: "Notice: Data has not successfully been saved.")
+            }
+            
+            return
+        }
+        
+        currentSave.which = Int16(segment)
+        
+        do {
+            try managedContext.save()
+            print("unit resaved")
+        } catch {
+            // this should never be displayed but is here to cover the possibility
+            //showAlert(title: "Save failed", message: "Notice: Data has not successfully been saved.")
+        }
     }
 }

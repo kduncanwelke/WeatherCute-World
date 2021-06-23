@@ -72,6 +72,17 @@ struct AirQuality: Decodable {
     var so2: Double
     var pm25: Double
     var pm10: Double
+    var usEpaIndex: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case co
+        case no2
+        case o3
+        case so2
+        case pm25
+        case pm10
+        case usEpaIndex = "us-epa-index"
+    }
 }
 
 struct Forecast: Decodable {

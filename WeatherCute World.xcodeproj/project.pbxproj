@@ -10,6 +10,8 @@
 		2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C04267915D600C06F88 /* TemperatureUnit.swift */; };
 		2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0D2679591600C06F88 /* ContentViewController.swift */; };
 		2D482C102679595700C06F88 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0F2679595700C06F88 /* PageViewController.swift */; };
+		2D66B36226839CB8005EEA7E /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D66B36126839CB8005EEA7E /* CoreDataManager.swift */; };
+		2D66B36526839CEC005EEA7E /* SavedData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2D66B36326839CEC005EEA7E /* SavedData.xcdatamodeld */; };
 		2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6CB80A267BF600005F19AA /* ViewExtension.swift */; };
 		2D6E4CCE268241A9006B0163 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CCD268241A9006B0163 /* LocationTableViewCell.swift */; };
 		2D6E4CD0268242C8006B0163 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E4CCF268242C8006B0163 /* SearchViewModel.swift */; };
@@ -48,6 +50,8 @@
 		2D482C04267915D600C06F88 /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		2D482C0D2679591600C06F88 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		2D482C0F2679595700C06F88 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		2D66B36126839CB8005EEA7E /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CoreDataManager.swift; path = "WeatherCute World/Models/CoreDataManager.swift"; sourceTree = SOURCE_ROOT; };
+		2D66B36426839CEC005EEA7E /* SavedData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SavedData.xcdatamodel; sourceTree = "<group>"; };
 		2D6CB80A267BF600005F19AA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		2D6E4CCD268241A9006B0163 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		2D6E4CCF268242C8006B0163 /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
@@ -98,6 +102,8 @@
 		2D482C06267915DD00C06F88 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				2D66B36126839CB8005EEA7E /* CoreDataManager.swift */,
+				2D66B36326839CEC005EEA7E /* SavedData.xcdatamodeld */,
 				2D482C04267915D600C06F88 /* TemperatureUnit.swift */,
 				2D6CB80A267BF600005F19AA /* ViewExtension.swift */,
 			);
@@ -301,9 +307,11 @@
 				2DC34BFD2674011800C6237D /* ParsingData.swift in Sources */,
 				2D6E4CD0268242C8006B0163 /* SearchViewModel.swift in Sources */,
 				2D930A9A26810BF70047D08D /* AlertViewModel.swift in Sources */,
+				2D66B36226839CB8005EEA7E /* CoreDataManager.swift in Sources */,
 				2D6E4CD22682801E006B0163 /* EditViewController.swift in Sources */,
 				2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */,
 				2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */,
+				2D66B36526839CEC005EEA7E /* SavedData.xcdatamodeld in Sources */,
 				2DDD67712677D0DD000BA6EA /* WeatherLocations.swift in Sources */,
 				2D6E4CCE268241A9006B0163 /* LocationTableViewCell.swift in Sources */,
 				2D6CB80B267BF600005F19AA /* ViewExtension.swift in Sources */,
@@ -513,6 +521,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		2D66B36326839CEC005EEA7E /* SavedData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				2D66B36426839CEC005EEA7E /* SavedData.xcdatamodel */,
+			);
+			currentVersion = 2D66B36426839CEC005EEA7E /* SavedData.xcdatamodel */;
+			path = SavedData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 2DC94750267290DF0009562E /* Project object */;
 }
