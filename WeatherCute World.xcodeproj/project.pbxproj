@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D2323A02684FDA3004D9F9C /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D23239F2684FDA3004D9F9C /* InfoViewController.swift */; };
 		2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C04267915D600C06F88 /* TemperatureUnit.swift */; };
 		2D482C0E2679591600C06F88 /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0D2679591600C06F88 /* ContentViewController.swift */; };
 		2D482C102679595700C06F88 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D482C0F2679595700C06F88 /* PageViewController.swift */; };
@@ -47,6 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D23239F2684FDA3004D9F9C /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		2D482C04267915D600C06F88 /* TemperatureUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureUnit.swift; sourceTree = "<group>"; };
 		2D482C0D2679591600C06F88 /* ContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewController.swift; sourceTree = "<group>"; };
 		2D482C0F2679595700C06F88 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				2D482C0D2679591600C06F88 /* ContentViewController.swift */,
 				2DD9879A267D058400D3F710 /* ForecastCollectionViewCell.swift */,
 				2D930A97268104E80047D08D /* AlertViewController.swift */,
+				2D23239F2684FDA3004D9F9C /* InfoViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -310,6 +313,7 @@
 				2D66B36226839CB8005EEA7E /* CoreDataManager.swift in Sources */,
 				2D6E4CD22682801E006B0163 /* EditViewController.swift in Sources */,
 				2D884BEB267A92C20003E4CD /* PageManager.swift in Sources */,
+				2D2323A02684FDA3004D9F9C /* InfoViewController.swift in Sources */,
 				2D482C05267915D600C06F88 /* TemperatureUnit.swift in Sources */,
 				2D66B36526839CEC005EEA7E /* SavedData.xcdatamodeld in Sources */,
 				2DDD67712677D0DD000BA6EA /* WeatherLocations.swift in Sources */,

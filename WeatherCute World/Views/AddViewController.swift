@@ -58,6 +58,13 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: IBActions
     
+    @IBAction func viewTapped(_ sender: UITapGestureRecognizer) {
+        // hide keyboard if user taps away
+        if searchField.isFirstResponder {
+            searchField.resignFirstResponder()
+        }
+    }
+    
     @IBAction func dismiss(_ sender: UIButton) {
         searchViewModel.clearSearch()
         self.dismiss(animated: true, completion: nil)

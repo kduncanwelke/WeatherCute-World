@@ -73,6 +73,11 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         loadUI()
     }
     
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // if device is rotated, recalculate cell size
+        collectionView.reloadData()
+    }
+    
     @objc func refreshContent() {
         // use if data has been reloaded
         print("refreshed")
@@ -213,7 +218,15 @@ extension ContentViewController: UICollectionViewDataSource {
         let referenceHeight: CGFloat = 210 // Approximate height of your cell
 
         let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
-
-        return CGSize(width: referenceWidth, height: referenceHeight)
+        
+        if referenceWidth > 800 && referenceWidth < 1200 {
+            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/2) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
+            return CGSize(width: newWidth, height: referenceHeight)
+        } else if referenceWidth > 1200 {
+            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/3) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
+            return CGSize(width: newWidth, height: referenceHeight)
+        } else {
+            return CGSize(width: referenceWidth, height: referenceHeight)
+        }
     }
 }

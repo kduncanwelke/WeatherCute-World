@@ -481,8 +481,7 @@ public class ContentViewModel {
         } else if code == 1237 || code == 1261 || code == 1264 {
             return UIImage(named: "nightmix")
         } else if code == 1279 || code == 1282 {
-            // FIXME: add thundersnow icon
-            return UIImage(named: "none")
+            return UIImage(named: "thundersnow")
         } else {
             return UIImage(named: "none")
         }

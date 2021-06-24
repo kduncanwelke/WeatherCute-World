@@ -71,5 +71,8 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "addLocation", sender: Any?.self)
     }
     
+    @IBAction func infoPressed(_ sender: UIButton) {
+        performSegue(withIdentifier: "viewInfo", sender: Any?.self)
+    }
 }
 

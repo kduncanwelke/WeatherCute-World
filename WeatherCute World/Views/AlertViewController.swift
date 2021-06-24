@@ -30,6 +30,8 @@ class AlertViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        backButton.layer.cornerRadius = 15
+        nextButton.layer.cornerRadius = 15
         loadAlerts()
     }
     
