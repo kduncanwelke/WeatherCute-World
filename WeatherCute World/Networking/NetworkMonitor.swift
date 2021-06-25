@@ -14,6 +14,7 @@ struct NetworkMonitor {
     static var connection = true
     
     static var status: NetworkStatus = .normal
+    static var prevStatus: NetworkStatus = .normal
     
     enum NetworkStatus {
         case normal

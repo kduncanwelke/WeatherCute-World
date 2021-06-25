@@ -50,6 +50,9 @@ public class SearchViewModel {
                 }
             case .failure(let error):
                 print(error)
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fail"), object: nil)
+                }
             }
         }
     }

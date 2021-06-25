@@ -219,7 +219,9 @@ extension ContentViewController: UICollectionViewDataSource {
 
         let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
         
-        if referenceWidth > 800 && referenceWidth < 1200 {
+        if referenceWidth > 400 && referenceWidth < 800 {
+            return CGSize(width: (referenceWidth*0.75), height: referenceHeight)
+        } else if referenceWidth > 800 && referenceWidth < 1200 {
             let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/2) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
             return CGSize(width: newWidth, height: referenceHeight)
         } else if referenceWidth > 1200 {

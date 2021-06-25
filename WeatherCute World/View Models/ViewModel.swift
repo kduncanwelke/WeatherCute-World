@@ -10,6 +10,37 @@ import CoreData
 
 public class ViewModel {
     
+    func setUpNetworkMonitor() {
+        NetworkMonitor.monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print("connection successful")
+                NetworkMonitor.connection = true
+                
+                // if network available, check if status had been lost
+                if NetworkMonitor.status == .lost {
+                    // if so, refresh data
+                    DispatchQueue.main.async {
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retrieveData"), object: nil)
+                        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "returned"), object: nil)
+                    }
+                }
+                
+                NetworkMonitor.status = .normal
+            } else if path.status == .unsatisfied {
+                print("no connection")
+                NetworkMonitor.connection = false
+                NetworkMonitor.status = .lost
+                
+                DispatchQueue.main.async {
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fail"), object: nil)
+                }
+            }
+        }
+        
+        let queue = DispatchQueue(label: "Monitor")
+        NetworkMonitor.monitor.start(queue: queue)
+    }
+    
     func changeUnit(index: Int) {
         if index == 0 {
             Temp.currentUnit = .fahrenheit

@@ -29,11 +29,11 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(updateSegment), name: NSNotification.Name(rawValue: "updateSegment"), object: nil)
         
-        //viewModel.getAll()
         viewModel.loadLocations()
         viewModel.loadUnit()
       
         updatePageControl()
+        viewModel.setUpNetworkMonitor()
     }
     
     @objc func updateSegment() {

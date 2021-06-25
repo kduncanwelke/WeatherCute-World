@@ -13,6 +13,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var searchField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var noNetwork: UILabel!
     
     // MARK: Variables
     
@@ -24,6 +26,10 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         // Do any additional setup after loading the view.
         
         NotificationCenter.default.addObserver(self, selector: #selector(showResults), name: NSNotification.Name(rawValue: "showResults"), object: nil)
+    
+        NotificationCenter.default.addObserver(self, selector: #selector(fail), name: NSNotification.Name(rawValue: "fail"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(returned), name: NSNotification.Name(rawValue: "returned"), object: nil)
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -32,10 +38,25 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc func showResults() {
+        indicator.stopAnimating()
         tableView.reloadData()
+    }
+    
+    @objc func returned() {
+        noNetwork.isHidden = true
+    }
+    
+    @objc func fail() {
+        indicator.stopAnimating()
+        noNetwork.isHidden = false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        searchField.becomeFirstResponder()
     }
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        indicator.startAnimating()
         searchViewModel.search(parameter: searchField.text ?? "")
         return false
     }
