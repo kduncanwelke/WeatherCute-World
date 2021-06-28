@@ -12,6 +12,14 @@ public class ContentViewModel {
     
     private let viewModel = ViewModel()
     
+    func isThereData() -> Bool {
+        if WeatherLocations.locationWeather.isEmpty {
+            return false
+        } else {
+            return true
+        }
+    }
+    
     func refreshData() {
         // retrieve anew when page is refreshed
         var index = PageManager.currentPage

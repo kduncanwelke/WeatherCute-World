@@ -18,6 +18,7 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var conditionImage: UIImageView!
     @IBOutlet weak var temperature: UILabel!
     @IBOutlet weak var currentCondition: UILabel!
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var feelsLike: UILabel!
     @IBOutlet weak var humidity: UILabel!
@@ -67,6 +68,10 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         astroView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         airQualityView.layer.cornerRadius = 15
         airQualityView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
+        if contentViewModel.isThereData() == false {
+            loadingIndicator.startAnimating()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +80,10 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // if device is rotated, recalculate cell size
-        collectionView.reloadData()
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.layoutIfNeeded()
+            self?.collectionView.reloadData()
+        }
     }
     
     @objc func refreshContent() {
@@ -85,6 +93,10 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
             reloadIndicator.stopAnimating()
             reloadButton.setImage(UIImage(named: "reload"), for: .normal)
             reloadButton.isEnabled = true
+        }
+        
+        if loadingIndicator.isAnimating {
+            loadingIndicator.stopAnimating()
         }
         
         loadUI()
@@ -215,17 +227,15 @@ extension ContentViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let sectionInset = (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset
 
-        let referenceHeight: CGFloat = 210 // Approximate height of your cell
-
+        let referenceHeight: CGFloat = 210 // height of cell
+        
         let referenceWidth = collectionView.safeAreaLayoutGuide.layoutFrame.width - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
         
-        if referenceWidth > 400 && referenceWidth < 800 {
-            return CGSize(width: (referenceWidth*0.75), height: referenceHeight)
-        } else if referenceWidth > 800 && referenceWidth < 1200 {
-            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/2) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
+        if referenceWidth > 800 && referenceWidth < 1200 {
+            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/2) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right - 5
             return CGSize(width: newWidth, height: referenceHeight)
         } else if referenceWidth > 1200 {
-            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/3) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right
+            let newWidth = (collectionView.safeAreaLayoutGuide.layoutFrame.width/3) - sectionInset.left - sectionInset.right - collectionView.contentInset.left - collectionView.contentInset.right - 5
             return CGSize(width: newWidth, height: referenceHeight)
         } else {
             return CGSize(width: referenceWidth, height: referenceHeight)
