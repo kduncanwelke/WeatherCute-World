@@ -299,7 +299,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="10" maxX="0.0" maxY="10"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="forecastCell" translatesAutoresizingMaskIntoConstraints="NO" id="XOT-6B-Dlc" customClass="ForecastCollectionViewCell" customModule="WeatherCute_World" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" fixedFrame="YES" reuseIdentifier="forecastCell" translatesAutoresizingMaskIntoConstraints="NO" id="XOT-6B-Dlc" customClass="ForecastCollectionViewCell" customModule="WeatherCute_World" customModuleProvider="target">
                                         <rect key="frame" x="7" y="10" width="400" height="210"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6bx-zW-MAM">
@@ -1508,7 +1508,6 @@
                             <constraint firstItem="Xge-Xb-eAo" firstAttribute="top" secondItem="tcj-ds-t6k" secondAttribute="bottom" constant="25" id="DS0-u9-chw"/>
                             <constraint firstItem="tcj-ds-t6k" firstAttribute="leading" secondItem="7oF-XS-ngP" secondAttribute="leading" constant="30" id="Em0-IQ-6vm"/>
                             <constraint firstItem="3Dk-C6-OUX" firstAttribute="width" secondItem="B3q-Tj-cTp" secondAttribute="width" id="G7p-73-JS6"/>
-                            <constraint firstItem="3Dk-C6-OUX" firstAttribute="height" relation="lessThanOrEqual" secondItem="B3q-Tj-cTp" secondAttribute="height" multiplier="0.7" id="GvI-xm-XUz"/>
                             <constraint firstAttribute="trailing" secondItem="kQ1-V4-pPn" secondAttribute="trailing" id="Ijn-uN-v9m"/>
                             <constraint firstItem="tcj-ds-t6k" firstAttribute="top" secondItem="kQ1-V4-pPn" secondAttribute="bottom" constant="20" id="K6t-dS-qb8"/>
                             <constraint firstItem="SuO-uv-xqa" firstAttribute="centerX" secondItem="B3q-Tj-cTp" secondAttribute="centerX" id="P9H-NE-pqW"/>
@@ -1516,7 +1515,6 @@
                             <constraint firstItem="Xge-Xb-eAo" firstAttribute="centerX" secondItem="B3q-Tj-cTp" secondAttribute="centerX" id="W0i-BS-ewY"/>
                             <constraint firstItem="3Dk-C6-OUX" firstAttribute="leading" secondItem="7oF-XS-ngP" secondAttribute="leading" id="ZCv-HR-M6e"/>
                             <constraint firstItem="7oF-XS-ngP" firstAttribute="trailing" secondItem="tcj-ds-t6k" secondAttribute="trailing" constant="30" id="d3u-Jc-3BA"/>
-                            <constraint firstItem="tcj-ds-t6k" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3Dk-C6-OUX" secondAttribute="bottom" constant="25" id="gad-s3-F3e"/>
                             <constraint firstItem="SuO-uv-xqa" firstAttribute="top" secondItem="7oF-XS-ngP" secondAttribute="top" constant="20" id="ggQ-a4-vuj"/>
                             <constraint firstItem="7oF-XS-ngP" firstAttribute="bottom" secondItem="Xge-Xb-eAo" secondAttribute="bottom" constant="20" id="hJE-hH-29f"/>
                             <constraint firstItem="3Dk-C6-OUX" firstAttribute="top" secondItem="SuO-uv-xqa" secondAttribute="bottom" constant="20" id="jik-ea-ZqQ"/>
