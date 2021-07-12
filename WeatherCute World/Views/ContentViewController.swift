@@ -47,6 +47,7 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var airQualityIndex: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var noNetworkLabel: UILabel!
     
     
     // MARK: Variables
@@ -60,6 +61,8 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         NotificationCenter.default.addObserver(self, selector: #selector(degreeUnitChanged), name: NSNotification.Name(rawValue: "degreeUnitChanged"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(refreshContent), name: NSNotification.Name(rawValue: "refreshContent"), object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(networkWhoops), name: NSNotification.Name(rawValue: "networkWhoops"), object: nil)
         
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -86,20 +89,31 @@ class ContentViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
     }
     
+    @objc func networkWhoops() {
+        loadingIndicator.stopAnimating()
+        noNetworkLabel.isHidden = false
+    }
+    
     @objc func refreshContent() {
         // use if data has been reloaded
-        print("refreshed")
-        if reloadIndicator.isAnimating {
-            reloadIndicator.stopAnimating()
-            reloadButton.setImage(UIImage(named: "reload"), for: .normal)
-            reloadButton.isEnabled = true
+        if contentViewModel.hasNetwork() {
+            noNetworkLabel.isHidden = true
+            
+            print("refreshed")
+            if reloadIndicator.isAnimating {
+                reloadIndicator.stopAnimating()
+                reloadButton.setImage(UIImage(named: "reload"), for: .normal)
+                reloadButton.isEnabled = true
+            }
+            
+            if loadingIndicator.isAnimating {
+                loadingIndicator.stopAnimating()
+            }
+            
+            loadUI()
+        } else {
+            noNetworkLabel.isHidden = false
         }
-        
-        if loadingIndicator.isAnimating {
-            loadingIndicator.stopAnimating()
-        }
-        
-        loadUI()
     }
     
     @objc func degreeUnitChanged() {

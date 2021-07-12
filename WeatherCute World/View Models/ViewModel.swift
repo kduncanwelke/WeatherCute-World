@@ -33,6 +33,8 @@ public class ViewModel {
                 
                 DispatchQueue.main.async {
                     NotificationCenter.default.post(name: NSNotification.Name(rawValue: "fail"), object: nil)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "networkWhoops"), object: nil)
+                    
                 }
             }
         }

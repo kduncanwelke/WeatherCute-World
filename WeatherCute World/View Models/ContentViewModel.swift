@@ -20,6 +20,10 @@ public class ContentViewModel {
         }
     }
     
+    func hasNetwork() -> Bool {
+        return NetworkMonitor.connection
+    }
+    
     func refreshData() {
         // retrieve anew when page is refreshed
         var index = PageManager.currentPage
