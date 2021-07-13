@@ -108,7 +108,7 @@ extension AddViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchViewModel.addSelectedLocation(index: indexPath.row)
-        
+        searchViewModel.clearSearch()
         self.dismiss(animated: true, completion: nil)
     }
 }

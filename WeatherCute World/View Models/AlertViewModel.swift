@@ -111,7 +111,11 @@ public class AlertViewModel {
     
     func getInstruction() -> String {
         if let alerts = WeatherLocations.locationWeather[PageManager.currentPage]?.alerts {
-            return alerts.alert[alertIndex].instruction
+            if alerts.alert[alertIndex].instruction == "" {
+                return "No instructions"
+            } else {
+                return alerts.alert[alertIndex].instruction
+            }
         } else {
             return "No data"
         }

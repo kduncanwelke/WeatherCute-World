@@ -42,6 +42,7 @@ public class EditViewModel {
         var managedContext = CoreDataManager.shared.managedObjectContext
         
         managedContext.delete(WeatherLocations.loaded[index])
+        WeatherLocations.loaded.remove(at: index)
         
         do {
             try managedContext.save()
@@ -57,9 +58,11 @@ public class EditViewModel {
         let locationsList = WeatherLocations.loaded
         
         var i = 0
+        print("resave")
         
         for location in locationsList {
             // reassign names to correct order after swap
+            print(i)
             location.name = WeatherLocations.list[i]
             
             i += 1
