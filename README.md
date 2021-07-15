@@ -1,7 +1,7 @@
 # WeatherCute World
 Worldwide cute weather!
 
-This app uses weather data from [WeatherAPI](https://www.weatherapi.com) to track weather and forecasts for a user's selected locations. WeatherCute World is an internationl version of WeatherCute that combines a user-friendly interface and friendly art with current condition and forecast data to provide an easy and fun way for users to get their U.S. weather. Features include current conditions, 3-day forecase, astronomy, air quality, toggling between Fahrenheit and Celsius measurements, easy addition and deletion of locations, current alerts, and more.
+This app uses weather data from [WeatherAPI](https://www.weatherapi.com) to track weather and forecasts for a user's selected locations. WeatherCute World is an internationl version of WeatherCute that combines a user-friendly interface and friendly art with current condition and forecast data to provide an easy and fun way for users to get their U.S. weather. Features include current conditions, 3-day forecast, astronomy, air quality, toggling between Fahrenheit and Celsius measurements, easy addition and deletion of locations, current alerts, and more.
 
 ![Screenshot](https://i.ibb.co/9HbdxGC/Screen-Shot-2021-07-15-at-2-46-17-PM.png)
 
