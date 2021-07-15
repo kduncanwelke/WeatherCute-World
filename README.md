@@ -46,7 +46,7 @@ Network monitoring allows the app to detect and indicate network loss, and respo
 The app overall aims to provide weather in a cute, enjoyable, user-friendly manner that allows the user to tailor their experience through reordering, data reloads, and measurement type preferences.
 
 ## Art
-Unique art for every weather condition specified by the NWS API (and for both day and nighttime conditions) is included as an integral part of this app, to allow at-a-glance understanding. This art was created by myself (the developer) and belongs to no one else. The art displayed is set based off condition codes returned by the API.
+Unique art for every weather condition specified by the WeatherAPI (and for both day and nighttime conditions) is included as an integral part of this app, to allow at-a-glance understanding. This art was created by myself (the developer) and belongs to no one else. The art displayed is set based off condition codes returned by the API.
 
 ## Support
 If you experience trouble using the app, have any questions, or simply want to contact me, you can contact me via email at kduncanwelke@gmail.com. I will be happy to discuss this project.
