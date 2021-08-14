@@ -118,8 +118,8 @@ struct Day: Decodable {
     var maxwindKph: Double
     var maxwindMph: Double
     var avghumidity: Double
-    var dailyChanceOfRain: String
-    var dailyChanceOfSnow: String
+    var dailyChanceOfRain: Int
+    var dailyChanceOfSnow: Int
     var condition: Condition
     var uv: Double
 }
