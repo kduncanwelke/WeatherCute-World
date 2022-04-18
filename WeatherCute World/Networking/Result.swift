@@ -7,7 +7,7 @@
 
 import Foundation
 
-// enum to manage results from data manager
+// enum to manage results from datamanager
 enum Result<Value> {
     case success(Value)
     case failure(Error)

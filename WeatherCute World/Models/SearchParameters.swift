@@ -8,7 +8,7 @@
 import Foundation
 
 struct SearchParameters {
-    static var query: String = ""
+    static var query: String = "54911"
     static var getAirQuality: String = "yes"
     static var date: String = ""
     

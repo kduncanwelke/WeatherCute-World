@@ -64,6 +64,9 @@ public class ViewModel {
     
     func getAll() {
         var index = 0
+
+        WeatherLocations.locationWeather.removeAll()
+        WeatherLocations.locationAstro.removeAll()
         
         for location in WeatherLocations.list {
             SearchParameters.query = location

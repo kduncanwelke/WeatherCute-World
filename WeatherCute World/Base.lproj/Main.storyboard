@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -36,13 +36,13 @@
                                 </connections>
                             </segmentedControl>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tnr-Pc-Qvp">
-                                <rect key="frame" x="0.0" y="97" width="414" height="732"/>
+                                <rect key="frame" x="0.0" y="97" width="414" height="734"/>
                                 <connections>
                                     <segue destination="lB9-2a-rKa" kind="embed" id="zdU-Nh-p7E"/>
                                 </connections>
                             </containerView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="0Ig-X9-RsL">
-                                <rect key="frame" x="165" y="834" width="84.5" height="28"/>
+                                <rect key="frame" x="167" y="836" width="80.5" height="26"/>
                             </pageControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Em8-Gk-ZbL">
                                 <rect key="frame" x="351" y="36" width="63" height="63"/>
@@ -73,7 +73,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRx-cP-srY">
-                                <rect key="frame" x="20" y="834" width="25" height="25"/>
+                                <rect key="frame" x="20" y="836" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="25" id="U3b-LH-n5f"/>
                                     <constraint firstAttribute="height" constant="25" id="p3x-eQ-meU"/>
@@ -606,7 +606,7 @@
                                                 <constraint firstItem="idt-Rk-KPb" firstAttribute="leading" secondItem="6bx-zW-MAM" secondAttribute="leading" priority="999" constant="10" id="xal-K9-ajB"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <color key="backgroundColor" red="0.1411764771" green="0.63921570780000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" red="0.29019607843137252" green="0.63921568627450975" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <size key="customSize" width="400" height="210"/>
                                         <connections>
                                             <outlet property="day" destination="eQE-7l-fhx" id="dVe-df-SDw"/>
@@ -974,7 +974,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="y2i-32-ryI"/>
-                        <color key="backgroundColor" red="0.14117647059999999" green="0.63921568630000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.29019607843137252" green="0.63921568627450975" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="C3k-cX-z2e" firstAttribute="top" secondItem="RKQ-vt-4sK" secondAttribute="bottom" constant="5" id="1Cc-iB-m30"/>
                             <constraint firstItem="rof-H6-vb5" firstAttribute="height" secondItem="bX3-qO-d77" secondAttribute="height" multiplier="0.29" id="3KA-yd-2HG"/>
@@ -1202,14 +1202,14 @@
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" rowHeight="70" id="W64-IQ-eVx" customClass="LocationTableViewCell" customModule="WeatherCute_World" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W64-IQ-eVx" id="cEH-5n-3qc">
-                                            <rect key="frame" x="0.0" y="0.0" width="384.5" height="70"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="385.5" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Place" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FRx-Dk-nR2">
-                                                    <rect key="frame" x="20" y="25" width="356.5" height="20.5"/>
+                                                    <rect key="frame" x="20" y="25" width="357.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <color key="textColor" red="0.11764705882352941" green="0.5725490196078431" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
@@ -1301,7 +1301,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SuO-uv-xqa">
-                                <rect key="frame" x="152" y="64" width="110.5" height="20.5"/>
+                                <rect key="frame" x="152" y="64" width="110" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -1576,7 +1576,7 @@
                                 <inset key="separatorInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editCell" rowHeight="70" id="E4W-3g-xta" customClass="EditTableViewCell" customModule="WeatherCute_World" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="70"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="E4W-3g-xta" id="Ukw-fG-g2C">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>

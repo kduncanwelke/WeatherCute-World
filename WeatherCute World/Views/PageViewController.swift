@@ -34,10 +34,15 @@ class PageViewController: UIPageViewController {
 
     func createPageViewController() {
         if pageControllerViewModel.getWeatherLocationTotal() > 0 {
+            print("create page")
+
+            print(PageManager.currentPage)
             var contentController = getContentViewController(withIndex: pageControllerViewModel.getCurrentPage())!
             var contentControllers = [contentController]
             
-            self.setViewControllers(contentControllers, direction: UIPageViewController.NavigationDirection.forward, animated: true, completion: nil)
+            self.setViewControllers(contentControllers, direction: UIPageViewController.NavigationDirection.forward, animated: false, completion: nil)
+        } else {
+            print("location total 0")
         }
     }
     
@@ -53,18 +58,8 @@ class PageViewController: UIPageViewController {
     }
     
     @objc func getNextPage() {
-        if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
+        if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) {
             setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-        }
-
-        // if not currently on last page, move forward as many pages as there are between the current and the last
-        if pageControllerViewModel.getWeatherLocationTotal() > 1 {
-            let locationCount = pageControllerViewModel.getWeatherLocationTotal() - 1
-            for i in 1...locationCount - pageControllerViewModel.getCurrentPage() {
-                if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
-                    setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
-                }
-            }
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
@@ -73,27 +68,40 @@ class PageViewController: UIPageViewController {
     
     @objc func getPrevPage() {
         if pageControllerViewModel.getCurrentPage() == 0 {
-            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
-                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            print("first")
+            if let currentViewController = self.viewControllers?.first {
+                setViewControllers([currentViewController], direction: .reverse, animated: false, completion: nil)
             }
-            
+
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "refreshContent"), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
-        } else if pageControllerViewModel.getCurrentPage() == (pageControllerViewModel.getWeatherLocationTotal() - 1) {
+        } else if pageControllerViewModel.getCurrentPage() == pageControllerViewModel.getWeatherLocationTotal() {
            
             pageControllerViewModel.setCurrentPage(page: pageControllerViewModel.getCurrentPage()-1)
+            print("last page")
             
-            // move up a section as this is last page
-            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
-                setViewControllers([nextViewController], direction: .reverse, animated: true, completion: nil)
+            // only one location left, just set to first viewcontroller
+            if WeatherLocations.list.count == 1 {
+                print("count one")
+                if let currentViewController = self.viewControllers?.first {
+                    setViewControllers([currentViewController], direction: .reverse, animated: false, completion: nil)
+                }
+            } else {
+                // move up a section as this is last page and there are more than one
+                if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController ) {
+                    setViewControllers([nextViewController], direction: .reverse, animated: false, completion: nil)
+                }
             }
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "sectionChanged"), object: nil)
         } else {
             // move down a section since this is not last page
-            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController(self, viewControllerAfter: currentViewController) {
-                setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            print("not last")
+
+            if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController( self, viewControllerBefore: currentViewController ) {
+                setViewControllers([nextViewController], direction: .reverse, animated: false, completion: nil)
             }
             
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
@@ -150,6 +158,10 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if completed {
+            if pageControllerViewModel.getWeatherLocationTotal() <= 1 {
+                return
+            }
+
             var oldIndex = pageControllerViewModel.getCurrentPage()
             
             pageControllerViewModel.setCurrentPage(page: pageControllerViewModel.getPendingIndex())
