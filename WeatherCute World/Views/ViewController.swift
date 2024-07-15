@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tempSegmentedControl: UISegmentedControl!
     @IBOutlet weak var pageControl: UIPageControl!
+    @IBOutlet weak var contentView: UIView!
     
     // MARK: Variables
     
@@ -45,13 +46,21 @@ class ViewController: UIViewController {
     }
     
     @objc func updatePageControl() {
-        pageControl.numberOfPages = viewModel.getWeatherLocationTotal()
+        print("update page control")
+        var locationCount = viewModel.getWeatherLocationTotal()
+        pageControl.numberOfPages = locationCount
+        
+        if locationCount == 0 {
+            contentView.isHidden = true
+        } else {
+            contentView.isHidden = false
+        }
     }
     
     @objc func sectionChanged() {
         pageControl.currentPage = viewModel.getCurrentPage()
-        print(PageManager.currentPage)
         print("section changed")
+        print(PageManager.currentPage)
     }
     
     // MARK: IBActions

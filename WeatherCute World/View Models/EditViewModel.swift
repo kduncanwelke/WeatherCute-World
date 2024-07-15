@@ -18,18 +18,6 @@ public class EditViewModel {
         return WeatherLocations.list[index]
     }
     
-    func removeLocation(index: Int) {
-        WeatherLocations.list.remove(at: index)
-        WeatherLocations.locationAstro.removeValue(forKey: index)
-        WeatherLocations.locationWeather.removeValue(forKey: index)
-        
-        deleteLocation(index: index)
-
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPrevPage"), object: nil)
-        // locations changed, re-fetch data to match up with new order
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retrieveData"), object: nil)
-    }
-    
     func swap(source: Int, destination: Int) {
         var swapping = WeatherLocations.list.remove(at: source)
         WeatherLocations.list.insert(swapping, at: destination)
@@ -44,7 +32,6 @@ public class EditViewModel {
         var managedContext = CoreDataManager.shared.managedObjectContext
         
         managedContext.delete(WeatherLocations.loaded[index])
-        WeatherLocations.loaded.remove(at: index)
         
         do {
             try managedContext.save()
@@ -52,6 +39,15 @@ public class EditViewModel {
         } catch {
             print("Failed to save")
         }
+        
+        WeatherLocations.loaded.remove(at: index)
+        WeatherLocations.list.remove(at: index)
+        WeatherLocations.locationAstro.removeValue(forKey: index)
+        WeatherLocations.locationWeather.removeValue(forKey: index)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPrevPage"), object: nil)
+        // locations changed, re-fetch data to match up with new order
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "retrieveData"), object: nil)
     }
     
     func resaveLocations() {

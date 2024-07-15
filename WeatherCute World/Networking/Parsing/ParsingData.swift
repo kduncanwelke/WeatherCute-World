@@ -54,7 +54,7 @@ struct CurrentConditions: Decodable {
     var humidity: Int
     var feelslikeC: Double
     var feelslikeF: Double
-    var uv: Double
+    var uv: Int
     var gustMph: Double
     var gustKph: Double
     var airQuality: AirQuality
@@ -121,7 +121,7 @@ struct Day: Decodable {
     var dailyChanceOfRain: Int
     var dailyChanceOfSnow: Int
     var condition: Condition
-    var uv: Double
+    var uv: Int
 }
 
 struct Astronomy: Decodable {
@@ -134,6 +134,6 @@ struct Astro: Decodable {
     var moonrise: String
     var moonset: String
     var moonPhase: String
-    var moonIllumination: String
+    var moonIllumination: Int
 }
 

@@ -17,7 +17,11 @@ public class SearchViewModel {
     }
     
     func getLocationName(index: Int) -> String {
-        var place = SearchParameters.searchResults[index].name
+        var city = SearchParameters.searchResults[index].name
+        var region = SearchParameters.searchResults[index].region
+        var country = SearchParameters.searchResults[index].country
+        var place = "\(city), \(region), \(country)"
+        
         return place
     }
     

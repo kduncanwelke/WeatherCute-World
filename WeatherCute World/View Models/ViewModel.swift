@@ -74,7 +74,7 @@ public class ViewModel {
             getAstroData(index: index)
             index += 1
         }
-        
+
         // create page controller pages after data load
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "addPage"), object: nil)
     }

@@ -59,7 +59,7 @@ class PageViewController: UIPageViewController {
     
     @objc func getNextPage() {
         if let currentViewController = self.viewControllers?.first, let nextViewController = dataSource?.pageViewController( self, viewControllerAfter: currentViewController ) {
-            setViewControllers([nextViewController], direction: .forward, animated: true, completion: nil)
+            setViewControllers([nextViewController], direction: .forward, animated: false, completion: nil)
         }
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updatePageControl"), object: nil)
@@ -153,7 +153,6 @@ extension PageViewController: UIPageViewControllerDataSource, UIPageViewControll
     
     func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         print("will transition")
-        //pendingIndex = (pendingViewControllers.first as! ContentViewController).itemIndex
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
